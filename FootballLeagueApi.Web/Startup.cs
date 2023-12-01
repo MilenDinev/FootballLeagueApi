@@ -1,3 +1,5 @@
+using FootballLeagueApi.Data.Seeders;
+using FootballLeagueApi.Web.ConfigExtensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,7 +28,8 @@ namespace FootballLeagueApi.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddDatabase(Configuration);
+            services.RegisterServices();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -37,6 +40,8 @@ namespace FootballLeagueApi.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            DatabaseSeeder.SeedAsync(app.ApplicationServices).GetAwaiter().GetResult();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
