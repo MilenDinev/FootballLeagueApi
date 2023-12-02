@@ -45,7 +45,7 @@
         }
 
         [Authorize]
-        [HttpPatch("Edit/{gameId}")]
+        [HttpPut("Edit/{gameId}")]
         public async Task Edit(EditGameModel editGameModel, int gameId)
         {
             await _gameService.EditAsync(editGameModel, gameId);
