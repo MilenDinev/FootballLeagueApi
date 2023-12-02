@@ -75,7 +75,6 @@
                 {
                     Id = team.Id,
                     Name = team.Name,
-                    Points = team.Points,
                 })
                 .FirstOrDefaultAsync()
                 ?? throw new ResourceNotFoundException(string.Format(
@@ -130,7 +129,6 @@
                 {
                     Id = team.Id,
                     Name = team.Name,
-                    Points = team.Points,
                 })
                  .ToListAsync();
 
