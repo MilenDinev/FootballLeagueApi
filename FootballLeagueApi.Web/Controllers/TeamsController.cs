@@ -23,7 +23,7 @@
         public async Task<ActionResult> Create(CreateTeamModel createTeamModel)
         {
             await _teamService.CreateAsync(createTeamModel);
-            return Ok();
+            return CreatedAtAction(nameof(Get), "Successfully created!");
         }
 
         [HttpGet]
