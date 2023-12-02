@@ -107,9 +107,9 @@
                             team.AwayGames.Sum(x => x.AwayTeamGoals),
                 })
                  .OrderByDescending(team => team.Points)
-                 .ThenBy(team => team.TotalGoalScored)
-                 .ThenBy(team => team.GamesWon)
-                 .ThenBy(team => team.GamesDraw)
+                 .ThenByDescending(team => team.TotalGoalScored)
+                 .ThenByDescending(team => team.GamesWon)
+                 .ThenByDescending(team => team.GamesDraw)
                  .ToListAsync();
 
             teamsRanking = teamsRanking.Select((team, index) =>
