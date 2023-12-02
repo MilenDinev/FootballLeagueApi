@@ -1,12 +1,13 @@
 ﻿namespace FootballLeagueApi.Web.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Authorization;
+    using System.Linq;
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using Data.Models.InputModels.Game;
     using Data.Models.ResponseModels.Game;
     using Services.Interfaces;
-    using System.Linq;
 
     [Route("api/[controller]")]
     [ApiController]
@@ -19,11 +20,12 @@
             _gameService = gameService;
         }
 
+        [Authorize]
         [HttpPost("Create/")]
         public async Task<ActionResult> Create(CreateGameModel createGameModel)
         {
             await _gameService.CreateAsync(createGameModel);
-            return Ok();
+            return CreatedAtAction(nameof(Get), "Successfully created!");
         }
 
         [HttpGet]
