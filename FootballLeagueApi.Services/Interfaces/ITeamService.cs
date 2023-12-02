@@ -10,8 +10,8 @@
         Task CreateAsync(CreateTeamModel teamModel);
         Task EditAsync(EditTeamModel teamModel, int teamId);
         Task DeleteAsync(int teamId);
-        Task<TeamResponseModel> GetTeamResponseModelAsync(int teamId);
-        Task<ICollection<TeamResponseModel>> GetTeamResponseModelBundleAsync();
-        Task<ICollection<TeamResponseModel>> GetTeamsRankingAsync();
+        Task<TeamResponseModel> GetTeamAsync(int teamId);
+        Task<ICollection<TeamResponseModel>> GetAllTeamsAsync();
+        Task<ICollection<TeamRankingResponseModel>> GetTeamsRankingAsync();
     }
 }
