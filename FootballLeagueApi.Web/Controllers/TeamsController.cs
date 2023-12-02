@@ -54,13 +54,13 @@
 
         [Authorize]
         [HttpPut("Edit/{teamId}")]
-        public async Task<ActionResult> Edit(EditTeamModel editTeamModel, int teamId)
+        public async Task Edit(EditTeamModel editTeamModel, int teamId)
         {
             await _teamService.EditAsync(editTeamModel, teamId);
-
-            return Ok();
         }
 
+
+        [Authorize]
         [HttpDelete("Delete/{teamId}")]
         public async Task Delete(int teamId)
         {
