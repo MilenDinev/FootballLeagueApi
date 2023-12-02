@@ -159,7 +159,5 @@
             homeTeam.LastModifiedOn = DateTime.UtcNow;
             awayTeam.LastModifiedOn = DateTime.UtcNow;
         }
-
-
     }
 }
