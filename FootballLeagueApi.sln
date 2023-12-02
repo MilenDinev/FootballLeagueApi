@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeagueApi.Data.Mode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeagueApi.Services", "FootballLeagueApi.Services\FootballLeagueApi.Services.csproj", "{E7DD38C8-F76B-431F-BBD4-A549BCDBD688}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeagueApi.Test", "FootballLeagueApi.Test\FootballLeagueApi.Test.csproj", "{1D588C4C-A741-4F38-8FF9-88EB832516F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{E7DD38C8-F76B-431F-BBD4-A549BCDBD688}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7DD38C8-F76B-431F-BBD4-A549BCDBD688}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7DD38C8-F76B-431F-BBD4-A549BCDBD688}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D588C4C-A741-4F38-8FF9-88EB832516F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D588C4C-A741-4F38-8FF9-88EB832516F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D588C4C-A741-4F38-8FF9-88EB832516F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D588C4C-A741-4F38-8FF9-88EB832516F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

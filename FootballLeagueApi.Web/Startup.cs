@@ -1,22 +1,15 @@
-using FootballLeagueApi.Data.Seeders;
-using FootballLeagueApi.Web.ConfigExtensions;
-using FootballLeagueApi.Web.Middlewares;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace FootballLeagueApi.Web
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.Extensions.Hosting;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Utils;
+    using Middlewares;
+    using ConfigExtensions;
+    using Data.Seeders;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -29,13 +22,11 @@ namespace FootballLeagueApi.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddJwtAuthentication(Configuration);
+            services.AddControllers();
             services.AddDatabase(Configuration);
             services.RegisterServices();
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "FootballLeagueApi.Web", Version = "v1" });
-            });
+            services.AddSwagger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +47,7 @@ namespace FootballLeagueApi.Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
