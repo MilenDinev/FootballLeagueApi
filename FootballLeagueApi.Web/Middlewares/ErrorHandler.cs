@@ -4,9 +4,9 @@
     using System;
     using System.Net;
     using System.Threading.Tasks;
-    using System.Collections.Generic;
     using System.Text.Json;
     using Data.Models;
+    using Services.Handlers;
 
     public class ErrorHandler
     {
@@ -33,7 +33,10 @@
                     case ArgumentException ae:
                         response.StatusCode = (int)HttpStatusCode.Conflict;
                         break;
-                    case KeyNotFoundException knfe:
+                    case ResourceAlreadyExistsException raee:
+                        response.StatusCode = (int)HttpStatusCode.Conflict;
+                        break;
+                    case ResourceNotFoundException knfe:
                         response.StatusCode = (int)HttpStatusCode.NotFound;
                         break;
                     case UnauthorizedAccessException uae:
