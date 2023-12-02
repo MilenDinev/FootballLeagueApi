@@ -22,6 +22,8 @@
         public async Task CreateAsync(CreateTeamModel teamModel)
         {
             await _teamService.CreateAsync(teamModel);
+            var groupKey = CacheServiceParams.TeamsGroupKey;
+            _memoryCache.Remove(groupKey);
         }
 
         public async Task DeleteAsync(int teamId)
