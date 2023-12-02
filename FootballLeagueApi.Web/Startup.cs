@@ -1,5 +1,6 @@
 using FootballLeagueApi.Data.Seeders;
 using FootballLeagueApi.Web.ConfigExtensions;
+using FootballLeagueApi.Web.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -48,6 +49,8 @@ namespace FootballLeagueApi.Web
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FootballLeagueApi.Web v1"));
             }
+
+            app.UseMiddleware<ErrorHandler>();
 
             app.UseHttpsRedirection();
 

@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Middlewares\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\FootballLeagueApi.Services\FootballLeagueApi.Services.csproj" />
   </ItemGroup>
 
