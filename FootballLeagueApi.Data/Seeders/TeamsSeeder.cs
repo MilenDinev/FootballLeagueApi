@@ -14,7 +14,7 @@
                 new Team()
                 {
                     Name = "Levski",
-                    NormalizedTag = "Levski".ToUpper(),
+                    SearchTag = "Levski".ToUpper(),
                     CreationDate = DateTime.UtcNow,
                     LastModifiedOn = DateTime.UtcNow
                 },
@@ -22,7 +22,7 @@
                 new Team()
                 {
                     Name = "CSKA",
-                    NormalizedTag = "CSKA".ToUpper(),
+                    SearchTag = "CSKA".ToUpper(),
                     CreationDate = DateTime.UtcNow,
                     LastModifiedOn = DateTime.UtcNow
                 },
@@ -30,7 +30,7 @@
                 new Team()
                 {
                     Name = "Slavia",
-                    NormalizedTag = "Slavia".ToUpper(),
+                    SearchTag = "Slavia".ToUpper(),
                     CreationDate = DateTime.UtcNow,
                     LastModifiedOn = DateTime.UtcNow
                 },
@@ -38,7 +38,7 @@
                 new Team()
                 {
                     Name = "Beroe",
-                    NormalizedTag = "Beroe".ToUpper(),
+                    SearchTag = "Beroe".ToUpper(),
                     CreationDate = DateTime.UtcNow,
                     LastModifiedOn = DateTime.UtcNow
                 },
@@ -46,7 +46,7 @@
                 new Team()
                 {
                     Name = "Ludogorets",
-                    NormalizedTag = "Ludogorets".ToUpper(),
+                    SearchTag = "Ludogorets".ToUpper(),
                     CreationDate = DateTime.UtcNow,
                     LastModifiedOn = DateTime.UtcNow
                 },
@@ -54,7 +54,7 @@
                 new Team()
                 {
                     Name = "Marek",
-                    NormalizedTag = "Marek".ToUpper(),
+                    SearchTag = "Marek".ToUpper(),
                     CreationDate = DateTime.UtcNow,
                     LastModifiedOn = DateTime.UtcNow
                 },
@@ -62,7 +62,7 @@
                 new Team()
                 {
                     Name = "Chernomorets",
-                    NormalizedTag = "Chernomorets".ToUpper(),
+                    SearchTag = "Chernomorets".ToUpper(),
                     CreationDate = DateTime.UtcNow,
                     LastModifiedOn = DateTime.UtcNow
                 },

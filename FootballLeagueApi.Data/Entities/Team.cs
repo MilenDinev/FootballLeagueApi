@@ -12,7 +12,7 @@
         }
 
         public string Name { get; set; }
-        public string NormalizedTag { get; set; }
+        public string SearchTag { get; set; }
         public int Points { get; set; }
         public virtual ICollection<Game> HomeGames { get; set; }
         public virtual ICollection<Game> AwayGames { get; set; }
