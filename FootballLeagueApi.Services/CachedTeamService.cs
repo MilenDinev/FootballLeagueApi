@@ -22,6 +22,7 @@
         public async Task CreateAsync(CreateTeamModel teamModel)
         {
             await _teamService.CreateAsync(teamModel);
+
             var groupKey = CacheServiceParams.TeamsGroupKey;
             _memoryCache.Remove(groupKey);
         }
@@ -29,6 +30,12 @@
         public async Task DeleteAsync(int teamId)
         {
             await _teamService.DeleteAsync(teamId);
+
+            var teamKey = ($"{CacheServiceParams.SingleTeamKey}", teamId);
+            _memoryCache.Remove(teamKey);
+
+            var groupKey = CacheServiceParams.TeamsGroupKey;
+            _memoryCache.Remove(groupKey);
         }
 
         public async Task EditAsync(EditTeamModel teamModel, int teamId)
