@@ -10,9 +10,9 @@
     {
         public static void RegisterServices(this IServiceCollection services)
         {
-            services.AddScoped<Repository<Game>>();
-            services.AddScoped<Repository<Team>>();
-            services.AddScoped<ITeamService, TeamService>();
+            services.AddMemoryCache();
+            services.AddScoped<TeamService>();
+            services.AddScoped<ITeamService, CachedTeamService>();
             services.AddScoped<IGameService, GameService>();
         }
     }
