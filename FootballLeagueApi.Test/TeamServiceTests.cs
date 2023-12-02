@@ -63,12 +63,12 @@ namespace FootballLeagueApi.Test
             var teamService = await GetTeamServiceAsync();
             var teamCreateModel = new CreateTeamModel
             {
-                Name = "Levski",
+                Name = "LevskI",
             };
 
             //Act Assert
             ResourceAlreadyExistsException exception = await Assert.ThrowsAsync<ResourceAlreadyExistsException>(() => teamService.CreateAsync(teamCreateModel));
-            Assert.Equal("Team - 'Levski' already exists!", exception.Message);
+            Assert.Equal($"Team - '{teamCreateModel.Name}' already exists!", exception.Message);
         }
 
         private async Task<ITeamService> GetTeamServiceAsync()
