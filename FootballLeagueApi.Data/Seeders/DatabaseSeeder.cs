@@ -3,11 +3,9 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using System;
-    using System.Diagnostics.CodeAnalysis;
-    using Entities;
     using System.Linq;
     using System.Threading.Tasks;
-    using FootballLeagueApi.Data.Repository;
+    using System.Diagnostics.CodeAnalysis;
 
     [ExcludeFromCodeCoverage]
     public static class DatabaseSeeder
@@ -22,7 +20,6 @@
             using (var serviceScope = applicationServices.CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                var teamRepository = serviceScope.ServiceProvider.GetRequiredService<Repository<Team>>();
 
                 await MigrateDatabaseAsync(context);
 
