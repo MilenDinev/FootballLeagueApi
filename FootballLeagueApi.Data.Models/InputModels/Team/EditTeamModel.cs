@@ -5,6 +5,7 @@
 
     public class EditTeamModel
     {
+        [Required(ErrorMessage = ValidationMessages.Required)]
         [StringLength(AttributeParams.TeamTitleMaxLength,
             ErrorMessage = ValidationMessages.MinMaxLength,
             MinimumLength = AttributeParams.TeamTitleMinLength)]
