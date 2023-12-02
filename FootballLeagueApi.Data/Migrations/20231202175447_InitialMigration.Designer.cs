@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FootballLeagueApi.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231202005947_InitialMigration")]
+    [Migration("20231202175447_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,32 +49,11 @@ namespace FootballLeagueApi.Data.Migrations
                     b.Property<DateTime>("LastModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("NormalizedTag")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("PlayedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("TeamId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TeamId1")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TeamId2")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AwayTeamId");
 
                     b.HasIndex("HomeTeamId");
-
-                    b.HasIndex("TeamId");
-
-                    b.HasIndex("TeamId1");
-
-                    b.HasIndex("TeamId2");
 
                     b.ToTable("Games");
                 });
@@ -98,11 +77,11 @@ namespace FootballLeagueApi.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NormalizedTag")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Points")
                         .HasColumnType("int");
+
+                    b.Property<string>("SearchTag")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -125,18 +104,6 @@ namespace FootballLeagueApi.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("FootballLeagueApi.Data.Entities.Team", null)
-                        .WithMany("DrawGames")
-                        .HasForeignKey("TeamId");
-
-                    b.HasOne("FootballLeagueApi.Data.Entities.Team", null)
-                        .WithMany("LostGames")
-                        .HasForeignKey("TeamId1");
-
-                    b.HasOne("FootballLeagueApi.Data.Entities.Team", null)
-                        .WithMany("WonGames")
-                        .HasForeignKey("TeamId2");
-
                     b.Navigation("AwayTeam");
 
                     b.Navigation("HomeTeam");
@@ -146,13 +113,7 @@ namespace FootballLeagueApi.Data.Migrations
                 {
                     b.Navigation("AwayGames");
 
-                    b.Navigation("DrawGames");
-
                     b.Navigation("HomeGames");
-
-                    b.Navigation("LostGames");
-
-                    b.Navigation("WonGames");
                 });
 #pragma warning restore 612, 618
         }
