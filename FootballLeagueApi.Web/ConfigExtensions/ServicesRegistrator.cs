@@ -1,8 +1,7 @@
 ﻿namespace FootballLeagueApi.Web.ConfigExtensions
 {
+    using Microsoft.Extensions.Caching.Memory;
     using Microsoft.Extensions.DependencyInjection;
-    using Data.Entities;
-    using Data.Repository;
     using Services;
     using Services.Interfaces;
 
@@ -13,6 +12,7 @@
             services.AddMemoryCache();
             services.AddScoped<TeamService>();
             services.AddScoped<ITeamService, CachedTeamService>();
+            services.AddScoped<IGameService, GameService>();
             services.AddScoped<IGameService, GameService>();
         }
     }
