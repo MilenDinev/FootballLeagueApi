@@ -1,12 +1,13 @@
 ﻿namespace FootballLeagueApi.Web.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Authorization;
+    using System.Linq;
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using Data.Models.InputModels.Team;
     using Data.Models.ResponseModels.Team;
     using Services.Interfaces;
-    using System.Linq;
 
     [Route("api/[controller]")]
     [ApiController]
@@ -19,6 +20,7 @@
             _teamService = teamService;
         }
 
+        [Authorize]
         [HttpPost("Create/")]
         public async Task<ActionResult> Create(CreateTeamModel createTeamModel)
         {
@@ -29,13 +31,13 @@
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TeamResponseModel>>> Get()
         {
-            var teamsResponseModel = await _teamService.GetTeamResponseModelBundleAsync();
+            var teamsResponseModel = await _teamService.GetAllTeamsAsync();
 
             return teamsResponseModel.ToList();
         }
 
         [HttpGet("Ranking/")]
-        public async Task<ActionResult<IEnumerable<TeamResponseModel>>> GetRanked()
+        public async Task<ActionResult<IEnumerable<TeamRankingResponseModel>>> GetRanked()
         {
             var teamsRanking = await _teamService.GetTeamsRankingAsync();
 
@@ -45,15 +47,18 @@
         [HttpGet("{teamId}")]
         public async Task<ActionResult<TeamResponseModel>> GetById(int teamId)
         {
-            var teamReponseModel = await _teamService.GetTeamResponseModelAsync(teamId);
+            var teamReponseModel = await _teamService.GetTeamAsync(teamId);
 
             return teamReponseModel;
         }
 
+        [Authorize]
         [HttpPut("Edit/{teamId}")]
-        public async Task Edit(EditTeamModel editTeamModel, int teamId)
+        public async Task<ActionResult> Edit(EditTeamModel editTeamModel, int teamId)
         {
             await _teamService.EditAsync(editTeamModel, teamId);
+
+            return Ok();
         }
 
         [HttpDelete("Delete/{teamId}")]

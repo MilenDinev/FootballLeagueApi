@@ -31,7 +31,7 @@
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GameResponseModel>>> Get()
         {
-            var gamesReponseModel = await _gameService.GetGameResponseModelBundleAsync();
+            var gamesReponseModel = await _gameService.GetAllGamesAsync();
 
             return gamesReponseModel.ToList();
         }
@@ -39,17 +39,19 @@
         [HttpGet("{gameId}")]
         public async Task<ActionResult<GameResponseModel>> GetById(int gameId)
         {
-            var gameReponseModel = await _gameService.GetGameResponseModelAsync(gameId);
+            var gameReponseModel = await _gameService.GetGameAsync(gameId);
 
             return gameReponseModel;
         }
 
-        [HttpPut("Edit/{gameId}")]
+        [Authorize]
+        [HttpPatch("Edit/{gameId}")]
         public async Task Edit(EditGameModel editGameModel, int gameId)
         {
             await _gameService.EditAsync(editGameModel, gameId);
         }
 
+        [Authorize]
         [HttpDelete("Delete/{gameId}")]
         public async Task Delete(int gameId)
         {
