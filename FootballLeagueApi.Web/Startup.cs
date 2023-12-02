@@ -5,7 +5,6 @@ namespace FootballLeagueApi.Web
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Utils;
     using Middlewares;
     using ConfigExtensions;
     using Data.Seeders;

@@ -1,14 +1,33 @@
-﻿namespace FootballLeagueApi.Web.Utils
+﻿namespace FootballLeagueApi.Web.ConfigExtensions
 {
+    using FootballLeagueApi.Data;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Caching.Memory;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
+    using Services;
+    using Services.Interfaces;
     using System.Text;
 
-    public static class ApplicationService
+    public static class ApplicationServices
     {
+        public static void RegisterServices(this IServiceCollection services)
+        {
+            services.AddMemoryCache();
+            services.AddScoped<TeamService>();
+            services.AddScoped<ITeamService, CachedTeamService>();
+            services.AddScoped<IGameService, GameService>();
+            services.AddScoped<IGameService, GameService>();
+        }
+
+        public static void AddDatabase(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+        }
+
         public static void AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddAuthentication(k =>
