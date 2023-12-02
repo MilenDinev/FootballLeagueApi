@@ -10,6 +10,7 @@
         Task CreateAsync(CreateGameModel gameModel);
         Task EditAsync(EditGameModel gameModel, int gameId);
         Task DeleteAsync(int gameId);
+        Task<GameResponseModel> GetGameResponseModelAsync(int gameId);
         Task<ICollection<GameResponseModel>> GetGameResponseModelBundleAsync();
     }
 }
